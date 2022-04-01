@@ -1,0 +1,156 @@
+# VMware-kernel-module-updater-Kali-Linux-build-fails-on-kernel-16.2.3-and-workstation-16.2.3-38-
+
+                 ███╗   ███╗███████╗██╗  ██╗███████╗██████╗ ██╗
+                 ████╗ ████║██╔════╝██║  ██║██╔════╝██╔══██╗██║
+                 ██╔████╔██║█████╗  ███████║█████╗  ██║  ██║██║
+                 ██║╚██╔╝██║██╔══╝  ██╔══██║██╔══╝  ██║  ██║██║
+                 ██║ ╚═╝ ██║███████╗██║  ██║███████╗██████╔╝██║
+                 ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝
+
+                   ██╗  ██╗ █████╗ ███████╗ █████╗ ███╗   ██╗
+                   ██║  ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║
+                   ███████║███████║███████╗███████║██╔██╗ ██║
+                   ██╔══██║██╔══██║╚════██║██╔══██║██║╚██╗██║
+                   ██║  ██║██║  ██║███████║██║  ██║██║ ╚████║
+                   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝
+
+┌──(mehedi㉿hasan)-[~]
+└─$ vmware -v
+VMware Workstation 16.2.3 build-19376536
+
+└─$ wget https://github.com/mkubecek/vmware-host-modules/archive/workstation-16.2.3.tar.gz
+--2022-04-01 20:47:02--  https://github.com/mkubecek/vmware-host-modules/archive/workstation-16.2.3.tar.gz
+Resolving github.com (github.com)... 20.205.243.166
+Connecting to github.com (github.com)|20.205.243.166|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/mkubecek/vmware-host-modules/tar.gz/refs/heads/workstation-16.2.3 [following]
+--2022-04-01 20:47:02--  https://codeload.github.com/mkubecek/vmware-host-modules/tar.gz/refs/heads/workstation-16.2.3
+Resolving codeload.github.com (codeload.github.com)... 20.205.243.165
+Connecting to codeload.github.com (codeload.github.com)|20.205.243.165|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/x-gzip]
+Saving to: ‘workstation-16.2.3.tar.gz’
+
+workstation-16.2.3.tar.gz                [    <=>                                                              ] 465.22K   676KB/s    in 0.7s    
+
+2022-04-01 20:47:04 (676 KB/s) - ‘workstation-16.2.3.tar.gz’ saved [476388]
+
+
+┌──(mehedi㉿hasan)-[~]
+└─$ tar xf workstation-16.2.3.tar.gz
+
+┌──(mehedi㉿hasan)-[~]
+└─$ cd vmware-host-modules-workstation-16.2.3
+
+┌──(mehedi㉿hasan)-[~/vmware-host-modules-workstation-16.2.3]
+└─$ make
+make -C vmmon-only 
+make[1]: Entering directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only'
+Using kernel build system.
+make -C /lib/modules/5.16.0-kali6-amd64/build/include/.. M=$PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= modules
+make[2]: Entering directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: gcc-11 (Debian 11.2.0-18) 11.2.0
+  You are using:           gcc-11 (Debian 11.2.0-19) 11.2.0
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/linux/driver.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/linux/driverLog.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/linux/hostif.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/apic.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/comport.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/cpuid.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/crosspage.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/memtrack.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/moduleloop.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/phystrack.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/sharedAreaVmmon.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/statVarsVmmon.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/task.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/common/vmx86.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/bootstrap/bootstrap.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/bootstrap/monLoader.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/bootstrap/monLoaderVmmon.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/bootstrap/vmmblob.o
+  LD [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/vmmon.o
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  MODPOST /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/Module.symvers
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/vmmon.mod.o
+  LD [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/vmmon.ko
+  BTF [M] /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/vmmon.ko
+Skipping BTF generation for /home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only/vmmon.ko due to unavailability of vmlinux
+make[2]: Leaving directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+make -C $PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= postbuild
+make[2]: Entering directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only'
+make[2]: 'postbuild' is up to date.
+make[2]: Leaving directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only'
+cp -f vmmon.ko ./../vmmon.o
+make[1]: Leaving directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmmon-only'
+make -C vmnet-only 
+make[1]: Entering directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only'
+Using kernel build system.
+make -C /lib/modules/5.16.0-kali6-amd64/build/include/.. M=$PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= modules
+make[2]: Entering directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: gcc-11 (Debian 11.2.0-18) 11.2.0
+  You are using:           gcc-11 (Debian 11.2.0-19) 11.2.0
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/driver.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/hub.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/userif.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/netif.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/bridge.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/procfs.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/smac_compat.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/smac.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vnetEvent.o
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vnetUserListener.o
+  LD [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vmnet.o
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  MODPOST /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/Module.symvers
+  CC [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vmnet.mod.o
+  LD [M]  /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vmnet.ko
+  BTF [M] /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vmnet.ko
+Skipping BTF generation for /home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only/vmnet.ko due to unavailability of vmlinux
+make[2]: Leaving directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+make -C $PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= postbuild
+make[2]: Entering directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only'
+make[2]: 'postbuild' is up to date.
+make[2]: Leaving directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only'
+cp -f vmnet.ko ./../vmnet.o
+make[1]: Leaving directory '/home/mehedi/vmware-host-modules-workstation-16.2.3/vmnet-only'
+
+┌──(mehedi㉿hasan)-[~/vmware-host-modules-workstation-16.2.3]
+└─$ sudo su
+[sudo] password for mehedi: 
+                 ███╗   ███╗███████╗██╗  ██╗███████╗██████╗ ██╗
+                 ████╗ ████║██╔════╝██║  ██║██╔════╝██╔══██╗██║
+                 ██╔████╔██║█████╗  ███████║█████╗  ██║  ██║██║
+                 ██║╚██╔╝██║██╔══╝  ██╔══██║██╔══╝  ██║  ██║██║
+                 ██║ ╚═╝ ██║███████╗██║  ██║███████╗██████╔╝██║
+                 ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝
+
+                   ██╗  ██╗ █████╗ ███████╗ █████╗ ███╗   ██╗
+                   ██║  ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║
+                   ███████║███████║███████╗███████║██╔██╗ ██║
+                   ██╔══██║██╔══██║╚════██║██╔══██║██║╚██╗██║
+                   ██║  ██║██║  ██║███████║██║  ██║██║ ╚████║
+                   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝
+
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  make install
+install -D -t /lib/modules/5.16.0-kali6-amd64/misc vmmon-only/vmmon.ko vmnet-only/vmnet.ko
+strip --strip-debug /lib/modules/5.16.0-kali6-amd64/misc/vmmon.ko /lib/modules/5.16.0-kali6-amd64/misc/vmnet.ko
+if test -z ""; then /sbin/depmod -a 5.16.0-kali6-amd64; fi
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  
+
