@@ -1,0 +1,113 @@
+#VMware Could not open dev/vmmon | Unable to open kernel device
+
+
+root  hasan  /home/mehedi  cd vmware-host-modules-workstation-16.2.3/
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  ls
+INSTALL  LICENSE  Makefile  README  vmmon.o  vmmon-only  vmnet.o  vmnet-only
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  tar -cf vmmon.tar vmmon-only
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  tar -cf vmnet.tar vmnet-only
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  cp -v vmmon.tar vmnet.tar /usr/lib/vmware/modules/source/
+'vmmon.tar' -> '/usr/lib/vmware/modules/source/vmmon.tar'
+'vmnet.tar' -> '/usr/lib/vmware/modules/source/vmnet.tar'
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  vmware-modconfig --console --install-all
+[AppLoader] GLib does not have GSettings support.
+Stopping VMware services:
+   VMware Authentication Daemon                                        done
+   Virtual machine monitor                                             done
+make: Entering directory '/tmp/modconfig-qKAuAh/vmmon-only'
+Using kernel build system.
+/usr/bin/make -C /lib/modules/5.16.0-kali6-amd64/build/include/.. M=$PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= modules
+make[1]: Entering directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: gcc-11 (Debian 11.2.0-18) 11.2.0
+  You are using:           gcc (Debian 11.2.0-19) 11.2.0
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/linux/driver.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/linux/driverLog.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/linux/hostif.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/apic.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/comport.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/cpuid.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/crosspage.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/memtrack.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/moduleloop.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/phystrack.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/sharedAreaVmmon.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/statVarsVmmon.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/task.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/common/vmx86.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/bootstrap/bootstrap.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/bootstrap/monLoader.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/bootstrap/monLoaderVmmon.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/bootstrap/vmmblob.o
+  LD [M]  /tmp/modconfig-qKAuAh/vmmon-only/vmmon.o
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  MODPOST /tmp/modconfig-qKAuAh/vmmon-only/Module.symvers
+  CC [M]  /tmp/modconfig-qKAuAh/vmmon-only/vmmon.mod.o
+  LD [M]  /tmp/modconfig-qKAuAh/vmmon-only/vmmon.ko
+  BTF [M] /tmp/modconfig-qKAuAh/vmmon-only/vmmon.ko
+Skipping BTF generation for /tmp/modconfig-qKAuAh/vmmon-only/vmmon.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+/usr/bin/make -C $PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= postbuild
+make[1]: Entering directory '/tmp/modconfig-qKAuAh/vmmon-only'
+make[1]: 'postbuild' is up to date.
+make[1]: Leaving directory '/tmp/modconfig-qKAuAh/vmmon-only'
+cp -f vmmon.ko ./../vmmon.o
+make: Leaving directory '/tmp/modconfig-qKAuAh/vmmon-only'
+make: Entering directory '/tmp/modconfig-qKAuAh/vmnet-only'
+Using kernel build system.
+/usr/bin/make -C /lib/modules/5.16.0-kali6-amd64/build/include/.. M=$PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= modules
+make[1]: Entering directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: gcc-11 (Debian 11.2.0-18) 11.2.0
+  You are using:           gcc (Debian 11.2.0-19) 11.2.0
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/driver.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/hub.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/userif.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/netif.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/bridge.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/procfs.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/smac_compat.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/smac.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/vnetEvent.o
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/vnetUserListener.o
+  LD [M]  /tmp/modconfig-qKAuAh/vmnet-only/vmnet.o
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+/bin/sh: 1: /usr/src/linux-headers-5.16.0-kali6-common/scripts/pahole-flags.sh: not found
+  MODPOST /tmp/modconfig-qKAuAh/vmnet-only/Module.symvers
+  CC [M]  /tmp/modconfig-qKAuAh/vmnet-only/vmnet.mod.o
+  LD [M]  /tmp/modconfig-qKAuAh/vmnet-only/vmnet.ko
+  BTF [M] /tmp/modconfig-qKAuAh/vmnet-only/vmnet.ko
+Skipping BTF generation for /tmp/modconfig-qKAuAh/vmnet-only/vmnet.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-5.16.0-kali6-amd64'
+/usr/bin/make -C $PWD SRCROOT=$PWD/. \
+  MODULEBUILDDIR= postbuild
+make[1]: Entering directory '/tmp/modconfig-qKAuAh/vmnet-only'
+make[1]: 'postbuild' is up to date.
+make[1]: Leaving directory '/tmp/modconfig-qKAuAh/vmnet-only'
+cp -f vmnet.ko ./../vmnet.o
+make: Leaving directory '/tmp/modconfig-qKAuAh/vmnet-only'
+Starting VMware services:
+   Virtual machine monitor                                             done
+   Virtual machine communication interface                             done
+   VM communication interface socket family                            done
+   Virtual ethernet                                                    done
+   VMware Authentication Daemon                                        done
+   Shared Memory Available                                             done
+
+ root  hasan  ../vmware-host-modules-workstation-16.2.3  
+
